@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Green Armor — India's Banana Leaf Packaging</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1c3a20;
+    --moss: #2d5a32;
+    --sage: #5a7a4a;
+    --leaf: #7aaa5a;
+    --cream: #f4efe4;
+    --parchment: #ede5d0;
+    --warm-white: #faf8f3;
+    --bark: #6b4c2a;
+    --sand: #c9b99a;
+    --text-dark: #1a2218;
+    --text-mid: #3d4f38;
+    --text-light: #6b7c65;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* GRAIN OVERLAY */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(244, 239, 228, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(90,122,74,0.15);
+    transition: all 0.3s;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--forest);
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .nav-logo span { color: var(--sage); font-style: italic; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: var(--text-mid);
+    font-size: 0.875rem; font-weight: 500; letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--moss); }
+  .nav-cta {
+    background: var(--forest); color: var(--cream);
+    padding: 0.6rem 1.4rem; border-radius: 2rem;
+    font-size: 0.875rem; font-weight: 500; text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--moss); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--forest);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8rem 4rem 5rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg-leaf {
+    position: absolute; right: -5%; top: 5%;
+    width: 55%; height: 90%;
+    background: radial-gradient(ellipse at 60% 40%, rgba(90,122,74,0.25) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-leaf-art {
+    position: absolute; right: 5%; top: 50%; transform: translateY(-50%);
+    width: 420px; height: 420px; opacity: 0.12;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(122,170,90,0.2); border: 1px solid rgba(122,170,90,0.3);
+    color: var(--leaf); padding: 0.4rem 1rem; border-radius: 2rem;
+    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 2rem; width: fit-content;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1.05; font-weight: 900;
+    color: var(--cream);
+    max-width: 700px; margin-bottom: 1.5rem;
+  }
+  .hero h1 em { color: var(--leaf); font-style: italic; }
+  .hero-sub {
+    color: rgba(244,239,228,0.65); font-size: 1.1rem;
+    max-width: 520px; line-height: 1.7; margin-bottom: 3rem;
+    font-weight: 300;
+  }
+  .hero-badges {
+    display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem;
+  }
+  .badge {
+    display: flex; align-items: center; gap: 0.5rem;
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(244,239,228,0.85); padding: 0.5rem 1rem; border-radius: 0.5rem;
+    font-size: 0.825rem; font-weight: 400;
+  }
+  .badge-dot {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--leaf);
+  }
+  .hero-ctas { display: flex; gap: 1rem; }
+  .btn-primary {
+    background: var(--leaf); color: var(--forest);
+    padding: 0.9rem 2rem; border-radius: 2rem;
+    font-size: 0.925rem; font-weight: 500; text-decoration: none;
+    transition: all 0.2s; border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: #8dc46a; transform: translateY(-1px); }
+  .btn-secondary {
+    background: transparent; color: var(--cream);
+    padding: 0.9rem 2rem; border-radius: 2rem;
+    font-size: 0.925rem; font-weight: 400; text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.25);
+    transition: all 0.2s; cursor: pointer;
+  }
+  .btn-secondary:hover { border-color: rgba(255,255,255,0.5); }
+  .hero-stats {
+    position: absolute; bottom: 3rem; right: 4rem;
+    display: flex; gap: 3rem;
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700; color: var(--leaf);
+  }
+  .hero-stat-label {
+    font-size: 0.75rem; color: rgba(244,239,228,0.5);
+    letter-spacing: 0.05em; text-transform: uppercase;
+  }
+
+  /* SECTION COMMONS */
+  section { padding: 6rem 4rem; }
+  .section-label {
+    display: inline-block; font-size: 0.75rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--sage); margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700; line-height: 1.15;
+    color: var(--forest); margin-bottom: 1rem;
+  }
+  .section-sub {
+    font-size: 1rem; color: var(--text-light);
+    line-height: 1.7; max-width: 560px; font-weight: 300;
+  }
+
+  /* PROBLEM SECTION */
+  .problem {
+    background: var(--parchment);
+    position: relative;
+  }
+  .problem-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center; margin-top: 4rem;
+  }
+  .problem-card {
+    background: white; border-radius: 1.2rem; padding: 2rem;
+    border: 1px solid rgba(90,122,74,0.1);
+    box-shadow: 0 2px 20px rgba(28,58,32,0.06);
+  }
+  .problem-card-tag {
+    font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--bark); font-weight: 600; margin-bottom: 0.75rem;
+  }
+  .problem-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; color: var(--forest); margin-bottom: 0.75rem;
+  }
+  .problem-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.7; }
+  .problem-stat {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; font-weight: 700;
+    color: var(--bark); margin: 1rem 0 0.25rem;
+  }
+  .problem-stat-desc { font-size: 0.8rem; color: var(--text-light); }
+  .quote-block {
+    background: var(--forest); border-radius: 1.2rem; padding: 2.5rem;
+    grid-column: 1 / -1;
+  }
+  .quote-block blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; color: var(--cream);
+    line-height: 1.7; font-style: italic; margin-bottom: 1.5rem;
+  }
+  .quote-author { font-size: 0.85rem; color: var(--leaf); font-weight: 500; }
+  .quote-org { font-size: 0.8rem; color: rgba(244,239,228,0.5); }
+
+  /* TECHNOLOGY */
+  .technology { background: var(--warm-white); }
+  .tech-grid {
+    display: grid; grid-template-columns: 1.2fr 1fr;
+    gap: 5rem; align-items: start; margin-top: 4rem;
+  }
+  .process-steps { display: flex; flex-direction: column; gap: 0; }
+  .process-step {
+    display: flex; gap: 1.5rem; align-items: flex-start;
+    padding: 1.5rem 0; position: relative;
+  }
+  .process-step:not(:last-child)::after {
+    content: ''; position: absolute;
+    left: 1.35rem; top: 3.5rem; bottom: 0;
+    width: 1px; background: rgba(90,122,74,0.2);
+  }
+  .step-num {
+    width: 2.75rem; height: 2.75rem; border-radius: 50%;
+    background: var(--forest); color: var(--leaf);
+    font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-content h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; color: var(--forest); margin-bottom: 0.3rem;
+  }
+  .step-content p { font-size: 0.875rem; color: var(--text-light); line-height: 1.6; }
+  .spec-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .spec-card {
+    background: var(--parchment); border-radius: 0.8rem; padding: 1.2rem;
+    border: 1px solid rgba(90,122,74,0.12);
+  }
+  .spec-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-light); margin-bottom: 0.3rem; }
+  .spec-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 700; color: var(--forest);
+  }
+  .carbon-compare {
+    grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1rem; margin-top: 1rem;
+  }
+  .carbon-card {
+    border-radius: 1rem; padding: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .carbon-card.bad { background: #fef3f0; border: 1px solid #f5c0b0; }
+  .carbon-card.good { background: #f0f7ec; border: 1px solid #b0d4a0; }
+  .carbon-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700;
+  }
+  .carbon-card.bad .carbon-num { color: #c0392b; }
+  .carbon-card.good .carbon-num { color: var(--moss); }
+  .carbon-desc { font-size: 0.8rem; color: var(--text-light); line-height: 1.5; }
+
+  /* MARKETS */
+  .markets { background: var(--forest); }
+  .markets .section-title { color: var(--cream); }
+  .markets .section-sub { color: rgba(244,239,228,0.6); }
+  .markets .section-label { color: var(--leaf); }
+  .markets-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .market-card {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 1.2rem; padding: 2rem; transition: all 0.3s;
+  }
+  .market-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); }
+  .market-icon {
+    width: 3rem; height: 3rem; background: rgba(122,170,90,0.2);
+    border-radius: 0.75rem; display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; margin-bottom: 1.2rem;
+  }
+  .market-card h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--cream); font-size: 1.15rem; margin-bottom: 0.5rem;
+  }
+  .market-card p { font-size: 0.875rem; color: rgba(244,239,228,0.55); line-height: 1.6; margin-bottom: 1rem; }
+  .market-size { font-size: 1.3rem; font-weight: 700; color: var(--leaf); font-family: 'Playfair Display', serif; }
+  .market-size span { font-size: 0.75rem; font-weight: 400; color: rgba(244,239,228,0.4); font-family: 'DM Sans', sans-serif; }
+  .market-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+  .tag {
+    font-size: 0.7rem; padding: 0.2rem 0.6rem; border-radius: 2rem;
+    background: rgba(122,170,90,0.15); color: var(--leaf); border: 1px solid rgba(122,170,90,0.2);
+  }
+
+  /* VALUE PILLARS */
+  .value { background: var(--cream); }
+  .value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+  .value-card {
+    padding: 2rem; border-radius: 1rem;
+    background: white; border: 1px solid rgba(90,122,74,0.12);
+    transition: all 0.3s;
+  }
+  .value-card:hover { box-shadow: 0 8px 30px rgba(28,58,32,0.1); transform: translateY(-2px); }
+  .value-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .value-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; color: var(--forest); margin-bottom: 0.5rem;
+  }
+  .value-card p { font-size: 0.85rem; color: var(--text-light); line-height: 1.6; }
+  .value-metric {
+    margin-top: 0.75rem; font-weight: 600; font-size: 0.8rem; color: var(--moss);
+  }
+
+  /* IMPACT NUMBERS */
+  .impact {
+    background: var(--parchment);
+    text-align: center;
+  }
+  .impact-numbers {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 2rem; margin-top: 4rem;
+  }
+  .impact-item { padding: 2rem 1rem; }
+  .impact-num {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 900;
+    color: var(--forest); line-height: 1;
+  }
+  .impact-num span { color: var(--sage); }
+  .impact-label { font-size: 0.875rem; color: var(--text-light); margin-top: 0.5rem; line-height: 1.5; }
+
+  /* SOURCING */
+  .sourcing { background: var(--warm-white); }
+  .sourcing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 4rem; align-items: center; }
+  .state-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .state-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 1.25rem; background: var(--parchment);
+    border-radius: 0.75rem; border: 1px solid rgba(90,122,74,0.12);
+  }
+  .state-name { font-weight: 500; color: var(--forest); font-size: 0.9rem; }
+  .state-mt { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--moss); font-weight: 700; }
+  .state-bar-wrap { flex: 1; margin: 0 1rem; height: 5px; background: rgba(90,122,74,0.12); border-radius: 3px; }
+  .state-bar { height: 100%; background: var(--sage); border-radius: 3px; }
+  .supply-benefits { display: flex; flex-direction: column; gap: 1rem; }
+  .benefit {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 1.25rem; background: var(--forest); border-radius: 1rem;
+  }
+  .benefit-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .benefit h4 { color: var(--leaf); font-size: 0.9rem; font-weight: 600; margin-bottom: 0.25rem; }
+  .benefit p { color: rgba(244,239,228,0.6); font-size: 0.8rem; line-height: 1.5; }
+
+  /* COMPLIANCE */
+  .compliance { background: var(--parchment); }
+  .compliance-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .compliance-card {
+    background: white; border-radius: 1rem; padding: 1.75rem;
+    border: 1px solid rgba(90,122,74,0.12);
+    display: flex; gap: 1.25rem; align-items: flex-start;
+  }
+  .compliance-badge {
+    width: 2.75rem; height: 2.75rem; background: var(--forest);
+    border-radius: 0.6rem; display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .compliance-card h4 { font-size: 0.95rem; color: var(--forest); font-weight: 600; margin-bottom: 0.3rem; }
+  .compliance-card p { font-size: 0.825rem; color: var(--text-light); line-height: 1.6; }
+  .compliance-status {
+    display: inline-block; margin-top: 0.5rem;
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--moss); background: rgba(90,122,74,0.1); padding: 0.2rem 0.6rem; border-radius: 2rem;
+  }
+
+  /* CONTACT */
+  .contact { background: var(--forest); }
+  .contact .section-title { color: var(--cream); }
+  .contact .section-sub { color: rgba(244,239,228,0.6); }
+  .contact .section-label { color: var(--leaf); }
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; margin-top: 4rem; align-items: start; }
+  .contact-info { color: rgba(244,239,228,0.7); }
+  .contact-info h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--cream); font-size: 1.4rem; margin-bottom: 1rem;
+  }
+  .contact-info p { font-size: 0.9rem; line-height: 1.8; margin-bottom: 2rem; }
+  .contact-detail { display: flex; gap: 0.75rem; align-items: center; margin-bottom: 0.75rem; font-size: 0.875rem; }
+  .contact-detail-icon { color: var(--leaf); font-size: 1.1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+  .form-group label { font-size: 0.8rem; color: rgba(244,239,228,0.6); font-weight: 500; letter-spacing: 0.04em; }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+    color: var(--cream); padding: 0.8rem 1rem; border-radius: 0.6rem;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    transition: border-color 0.2s; outline: none; resize: vertical;
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(244,239,228,0.25); }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus { border-color: rgba(122,170,90,0.5); }
+  .form-group select option { background: var(--forest); color: var(--cream); }
+  .form-submit {
+    width: 100%; padding: 1rem; background: var(--leaf);
+    color: var(--forest); border: none; border-radius: 2rem;
+    font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600;
+    cursor: pointer; transition: all 0.2s; margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: #8dc46a; transform: translateY(-1px); }
+  #form-success {
+    display: none; background: rgba(122,170,90,0.15); border: 1px solid rgba(122,170,90,0.3);
+    color: var(--leaf); padding: 1rem; border-radius: 0.75rem; font-size: 0.875rem;
+    text-align: center; margin-top: 1rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #111c12; padding: 3rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif; font-size: 1.2rem;
+    color: var(--cream); font-weight: 700;
+  }
+  .footer-logo em { color: var(--leaf); font-style: italic; }
+  .footer-links { display: flex; gap: 2rem; }
+  .footer-links a { color: rgba(244,239,228,0.4); font-size: 0.8rem; text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--cream); }
+  .footer-note { color: rgba(244,239,228,0.25); font-size: 0.75rem; }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    .hero-stats { display: none; }
+    .problem-grid, .tech-grid, .markets-grid, .value-grid,
+    .impact-numbers, .sourcing-grid, .compliance-grid,
+    .contact-wrap, .form-row { grid-template-columns: 1fr; }
+    .carbon-compare { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Green<span>Armor</span></div>
+  <ul class="nav-links">
+    <li><a href="#technology">Technology</a></li>
+    <li><a href="#markets">Markets</a></li>
+    <li><a href="#sourcing">Sourcing</a></li>
+    <li><a href="#compliance">Compliance</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Request a Sample →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-leaf"></div>
+  <svg class="hero-leaf-art" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M100 10 C140 10 190 50 190 100 C190 160 140 190 100 190 C60 190 10 160 10 100 C10 50 60 10 100 10 Z" fill="white"/>
+    <path d="M100 10 L100 190" stroke="#1c3a20" stroke-width="2"/>
+    <path d="M100 60 C120 70 140 80 155 100" stroke="#1c3a20" stroke-width="1.5"/>
+    <path d="M100 80 C120 88 138 95 150 110" stroke="#1c3a20" stroke-width="1.5"/>
+    <path d="M100 100 C118 106 134 112 145 125" stroke="#1c3a20" stroke-width="1.5"/>
+    <path d="M100 60 C80 70 60 80 45 100" stroke="#1c3a20" stroke-width="1.5"/>
+    <path d="M100 80 C82 88 62 95 50 110" stroke="#1c3a20" stroke-width="1.5"/>
+    <path d="M100 100 C82 106 66 112 55 125" stroke="#1c3a20" stroke-width="1.5"/>
+  </svg>
+  <div class="hero-eyebrow">
+    <div class="badge-dot"></div>
+    Made in India · Carbon Negative · Zero Imports
+  </div>
+  <h1>Packaging that <em>grows</em> from the ground</h1>
+  <p class="hero-sub">Green Armor replaces petroleum-based plastics with banana leaf composite packaging — giving India's FMCG and food industry a supply chain that no war, no oil shock, and no trade sanction can disrupt.</p>
+  <div class="hero-badges">
+    <div class="badge"><div class="badge-dot"></div> −2.5 kg CO₂ per ton produced</div>
+    <div class="badge"><div class="badge-dot"></div> 100% locally sourced raw material</div>
+    <div class="badge"><div class="badge-dot"></div> EPR exempt · SUP Ban compliant</div>
+    <div class="badge"><div class="badge-dot"></div> 53% lower cost vs petroleum plastic</div>
+  </div>
+  <div class="hero-ctas">
+    <a href="#contact" class="btn-primary">Request a Sample</a>
+    <a href="#technology" class="btn-secondary">See How It Works</a>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-val">$26.89B</div>
+      <div class="hero-stat-label">Market Size 2031</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">3.06%</div>
+      <div class="hero-stat-label">CAGR Growth</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">2,500+</div>
+      <div class="hero-stat-label">Rural Jobs Created</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem fade-up" id="problem">
+  <div class="section-label">The Crisis</div>
+  <h2 class="section-title">India's packaging is built on a fragile foundation</h2>
+  <p class="section-sub">70% of Indian consumer packaging depends on flexible plastics — a petrochemical product held hostage to global oil markets and conflict zones.</p>
+  <div class="problem-grid">
+    <div class="problem-card">
+      <div class="problem-card-tag">Russia–Ukraine War · IEA 2024</div>
+      <h3>Energy markets reshaped overnight</h3>
+      <p>80 billion cubic metres of pipeline gas were cut from Europe, triggering a historic energy price spiral. Indian petrochemical manufacturers absorbed the shock silently — until they couldn't.</p>
+      <div class="problem-stat">80 bcm</div>
+      <div class="problem-stat-desc">EU gas supply cut, driving global polymer price volatility</div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-card-tag">Middle East Crisis · 2025–26</div>
+      <h3>The Strait of Hormuz squeeze</h3>
+      <p>Geopolitical tensions in West Asia have led to temporary shutdowns of India's petrochemical supply lines. Polymer prices spiked 50%+ in weeks — and B2B manufacturers on fixed-price contracts had nowhere to go.</p>
+      <div class="problem-stat">70%</div>
+      <div class="problem-stat-desc">of Indian FMCG packaging relies on oil-derived flexible plastics</div>
+    </div>
+    <div class="quote-block">
+      <blockquote>"The hardest part right now is managing client expectations. We supply packaging on JIT systems with fixed-price contracts. When polymer prices spike 50% because of a blockade in the Strait of Hormuz, we can't instantly pass those costs down. The manufacturer absorbs the shock. The industry desperately needs alternatives."</blockquote>
+      <div class="quote-author">Himanshu Shah</div>
+      <div class="quote-org">Business Development, Suyash Industries (Est. 1988), Pune</div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNOLOGY -->
+<section class="technology fade-up" id="technology">
+  <div class="section-label">Our Technology</div>
+  <h2 class="section-title">Chemical-free cellular processing, at industrial scale</h2>
+  <p class="section-sub">Proprietary enzyme treatment transforms agricultural banana leaf waste into high-performance packaging composites — durable, water-resistant, and fully compostable.</p>
+  <div class="tech-grid">
+    <div>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>Sourcing — Agri-waste Collection</h4>
+            <p>Banana pruning waste collected from farming cooperatives across Tamil Nadu, Karnataka, Kerala, Andhra Pradesh, and Maharashtra. Zero-cost feedstock that would otherwise be field-burned.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>Processing — Cellular Enhancement</h4>
+            <p>Proprietary enzyme treatment extends natural shelf life from 3 days to 12 months. AI-driven sorting ensures uniform thickness for industrial packaging lines. 40% faster than traditional curing methods.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>Manufacturing — B2B Production</h4>
+            <p>Decentralised micro-processing hubs near plantation zones reduce logistics cost and transit time. Output meets FSSAI food contact standards and EPR exemption criteria.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h4>Distribution — Direct to Clients</h4>
+            <p>Multi-year offtake agreements with FMCG, food delivery platforms, and agribusiness exporters. Just-in-time delivery with 30-day inventory buffer for supply security.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="spec-cards">
+        <div class="spec-card">
+          <div class="spec-label">Shelf Life</div>
+          <div class="spec-val">12 months</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-label">Heat Tolerance</div>
+          <div class="spec-val">80°C</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-label">Water Resistance</div>
+          <div class="spec-val">High</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-label">Weight</div>
+          <div class="spec-val">Light</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-label">Compostable</div>
+          <div class="spec-val">90 days</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-label">Processing Cost</div>
+          <div class="spec-val">$1.5/ton</div>
+        </div>
+      </div>
+      <div class="carbon-compare">
+        <div class="carbon-card bad">
+          <div>
+            <div class="carbon-num">+2.5 kg</div>
+            <div class="carbon-desc">CO₂ emitted per kg<br>Petroleum Plastic</div>
+          </div>
+        </div>
+        <div class="carbon-card good">
+          <div>
+            <div class="carbon-num">−1.8 kg</div>
+            <div class="carbon-desc">CO₂ sequestered per kg<br>Green Armor</div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:0.72rem; color:var(--text-light); margin-top:0.75rem;">Source: Arumugam & Pugazhenthi (2023), Elsevier — Investigations on mechanical properties of processed banana leaves for sustainable food packaging applications.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETS -->
+<section class="markets fade-up" id="markets">
+  <div class="section-label">Who We Serve</div>
+  <h2 class="section-title">Three sectors. One resilient supply chain.</h2>
+  <p class="section-sub">We target India's highest-volume packaging consumers — industries already under regulatory and cost pressure that Green Armor directly solves.</p>
+  <div class="markets-grid">
+    <div class="market-card">
+      <div class="market-icon">🛒</div>
+      <h3>FMCG Sector</h3>
+      <p>Food, personal care, and home care brands needing sustainable packaging that meets EPR obligations and consumer demand for green alternatives.</p>
+      <div class="market-size">$12.1B <span>addressable</span></div>
+      <div class="market-tags">
+        <span class="tag">Food</span>
+        <span class="tag">Personal Care</span>
+        <span class="tag">Home Care</span>
+      </div>
+    </div>
+    <div class="market-card">
+      <div class="market-icon">🍱</div>
+      <h3>Food Delivery</h3>
+      <p>QSRs and cloud kitchens requiring compostable packaging for regulatory compliance under India's single-use plastic ban. 85% growth trajectory.</p>
+      <div class="market-size">$8.06B <span>addressable</span></div>
+      <div class="market-tags">
+        <span class="tag">QSR</span>
+        <span class="tag">Cloud Kitchens</span>
+        <span class="tag">Takeaway</span>
+      </div>
+    </div>
+    <div class="market-card">
+      <div class="market-icon">🌾</div>
+      <h3>Agribusiness</h3>
+      <p>Fresh produce exporters and organic grain distributors needing durable, breathable packaging that meets international food safety standards.</p>
+      <div class="market-size">$6.72B <span>addressable</span></div>
+      <div class="market-tags">
+        <span class="tag">Produce</span>
+        <span class="tag">Grains</span>
+        <span class="tag">Fruit Exports</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE PILLARS -->
+<section class="value fade-up" id="value">
+  <div class="section-label">Why Green Armor</div>
+  <h2 class="section-title">Six reasons procurement teams switch</h2>
+  <p class="section-sub">Not just sustainable — strategically superior. Every pillar directly solves a pain point that oil-based plastics cannot.</p>
+  <div class="value-grid">
+    <div class="value-card">
+      <div class="value-icon">📉</div>
+      <h4>Cost Stability</h4>
+      <p>100% INR-denominated raw material costs. No exposure to USD crude oil pricing, Strait of Hormuz disruptions, or OPEC decisions.</p>
+      <div class="value-metric">↓ 53% lower cost vs petroleum plastic</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🌍</div>
+      <h4>Zero Imports</h4>
+      <p>Every kilogram of raw material sourced domestically. Complete insulation from global trade barriers, tariffs, and sanctions regimes.</p>
+      <div class="value-metric">100% local supply chain</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">📋</div>
+      <h4>ESG & EPR Compliance</h4>
+      <p>Banana leaf products are exempt from Extended Producer Responsibility fees — saving your compliance team significant cost and paperwork.</p>
+      <div class="value-metric">EPR exempt · 95% compliant</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🌿</div>
+      <h4>Carbon Negative</h4>
+      <p>Production sequesters −2.5 kg CO₂ per ton. Fully home-compostable within 90 days, returning nutrients to soil rather than landfill.</p>
+      <div class="value-metric">−45% carbon vs plastic alternative</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🔬</div>
+      <h4>Proven Technology</h4>
+      <p>Peer-reviewed processing methodology. Patented curing process. AI-driven quality sorting for industrial consistency across bulk orders.</p>
+      <div class="value-metric">12-month shelf life · FSSAI approved</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🤝</div>
+      <h4>Rural Impact</h4>
+      <p>Every supply partnership directly creates agricultural livelihoods. 2,500+ rural jobs generated through our decentralised hub model.</p>
+      <div class="value-metric">Make in India aligned</div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="impact fade-up">
+  <div class="section-label">Impact at Scale</div>
+  <h2 class="section-title">Numbers that matter</h2>
+  <div class="impact-numbers">
+    <div class="impact-item">
+      <div class="impact-num">$26<span>.89B</span></div>
+      <div class="impact-label">Global sustainable packaging market size by 2031</div>
+    </div>
+    <div class="impact-item">
+      <div class="impact-num">53<span>%</span></div>
+      <div class="impact-label">Cost reduction vs petroleum plastic per ton</div>
+    </div>
+    <div class="impact-item">
+      <div class="impact-num">2,500<span>+</span></div>
+      <div class="impact-label">Rural agricultural livelihoods created</div>
+    </div>
+    <div class="impact-item">
+      <div class="impact-num">−45<span>%</span></div>
+      <div class="impact-label">Carbon emissions vs conventional packaging</div>
+    </div>
+  </div>
+</section>
+
+<!-- SOURCING -->
+<section class="sourcing fade-up" id="sourcing">
+  <div class="section-label">Operational Sourcing</div>
+  <h2 class="section-title">A supply chain that can't be sanctioned</h2>
+  <p class="section-sub">15,000 MT of annual banana cultivation across five Indian states feeds our decentralised micro-processing hubs — growing at 15% YoY.</p>
+  <div class="sourcing-grid">
+    <div>
+      <div class="state-list">
+        <div class="state-row">
+          <div class="state-name">Tamil Nadu</div>
+          <div class="state-bar-wrap"><div class="state-bar" style="width:100%"></div></div>
+          <div class="state-mt">4,331 MT</div>
+        </div>
+        <div class="state-row">
+          <div class="state-name">Karnataka</div>
+          <div class="state-bar-wrap"><div class="state-bar" style="width:74%"></div></div>
+          <div class="state-mt">3,200 MT</div>
+        </div>
+        <div class="state-row">
+          <div class="state-name">Andhra Pradesh</div>
+          <div class="state-bar-wrap"><div class="state-bar" style="width:65%"></div></div>
+          <div class="state-mt">2,800 MT</div>
+        </div>
+        <div class="state-row">
+          <div class="state-name">Kerala</div>
+          <div class="state-bar-wrap"><div class="state-bar" style="width:58%"></div></div>
+          <div class="state-mt">2,500 MT</div>
+        </div>
+        <div class="state-row">
+          <div class="state-name">Maharashtra</div>
+          <div class="state-bar-wrap"><div class="state-bar" style="width:44%"></div></div>
+          <div class="state-mt">1,905 MT</div>
+        </div>
+      </div>
+      <p style="font-size:0.72rem; color:var(--text-light); margin-top:1rem;">Source: NHB/IASRI State Production Tables 2019–2024</p>
+    </div>
+    <div class="supply-benefits">
+      <div class="benefit">
+        <div class="benefit-icon">🚢</div>
+        <div>
+          <h4>No International Shipping</h4>
+          <p>Entirely domestic logistics. No port delays, no freight cost volatility, no customs dependency.</p>
+        </div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">💰</div>
+        <div>
+          <h4>Zero Trade Tariffs</h4>
+          <p>No import duties on any raw material. Fully insulated from US–China trade tensions and EU carbon tariffs on plastics.</p>
+        </div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">🌱</div>
+        <div>
+          <h4>Dual-Feed Flexibility</h4>
+          <p>Processing infrastructure can also handle areca, palm, and paddy straw — three alternative agri-waste streams as backup supply.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPLIANCE -->
+<section class="compliance fade-up" id="compliance">
+  <div class="section-label">Regulatory Alignment</div>
+  <h2 class="section-title">Built for India's policy direction</h2>
+  <p class="section-sub">Green Armor is fully compliant with India's plastic waste regulations and directly benefits from government manufacturing incentives.</p>
+  <div class="compliance-grid">
+    <div class="compliance-card">
+      <div class="compliance-badge">🏭</div>
+      <div>
+        <h4>Make in India</h4>
+        <p>Direct beneficiary of domestic manufacturing incentives. Potential eligibility for Production Linked Incentive (PLI) scheme funding.</p>
+        <span class="compliance-status">95% Aligned</span>
+      </div>
+    </div>
+    <div class="compliance-card">
+      <div class="compliance-badge">🚫</div>
+      <div>
+        <h4>SUP Ban 2022</h4>
+        <p>Single-use plastic ban effective July 1, 2022. Green Armor packaging is a direct replacement for all banned item categories.</p>
+        <span class="compliance-status">100% Compliant</span>
+      </div>
+    </div>
+    <div class="compliance-card">
+      <div class="compliance-badge">♻️</div>
+      <div>
+        <h4>EPR Mandate</h4>
+        <p>Extended Producer Responsibility obligations. Banana leaf products are EPR-exempt, reducing your compliance cost and administrative burden significantly.</p>
+        <span class="compliance-status">Exempt Status</span>
+      </div>
+    </div>
+    <div class="compliance-card">
+      <div class="compliance-badge">🔬</div>
+      <div>
+        <h4>FSSAI Food Safety</h4>
+        <p>Meets FSSAI guidelines for direct food contact materials. Suitable for all fresh produce, packaged foods, and QSR applications.</p>
+        <span class="compliance-status">Food-Grade Certified</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact fade-up" id="contact">
+  <div class="section-label">Get in Touch</div>
+  <h2 class="section-title">Start with a sample. Build from there.</h2>
+  <p class="section-sub">We work directly with procurement teams, brand managers, and sustainability leads. Tell us your packaging need and we'll respond within 48 hours.</p>
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <h3>Let's build something that lasts</h3>
+      <p>Whether you're an FMCG manufacturer looking to de-risk your packaging supply, a cloud kitchen navigating the SUP ban, or an agribusiness exploring export-grade sustainable options — Green Armor has a solution ready.</p>
+      <div class="contact-detail">
+        <span class="contact-detail-icon">📧</span>
+        hello@greenarmor.in
+      </div>
+      <div class="contact-detail">
+        <span class="contact-detail-icon">📞</span>
+        +91 98765 43210
+      </div>
+      <div class="contact-detail">
+        <span class="contact-detail-icon">📍</span>
+        Pune, Maharashtra — with sourcing hubs across South India
+      </div>
+    </div>
+    <div>
+      <form id="inquiry-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Rajesh Kumar" required>
+          </div>
+          <div class="form-group">
+            <label>Company Name</label>
+            <input type="text" placeholder="Suyash Industries" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Business Email</label>
+          <input type="email" placeholder="rajesh@yourcompany.com" required>
+        </div>
+        <div class="form-group">
+          <label>Industry Sector</label>
+          <select>
+            <option value="">Select your sector</option>
+            <option>FMCG — Food & Beverages</option>
+            <option>FMCG — Personal Care / Home Care</option>
+            <option>Food Delivery / QSR / Cloud Kitchen</option>
+            <option>Agribusiness / Fresh Produce Export</option>
+            <option>Retail / E-commerce</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message / Requirements</label>
+          <textarea rows="4" placeholder="Tell us your current packaging volume, key challenges, or what you'd like to sample..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Inquiry →</button>
+        <div id="form-success">✅ Thank you! We'll get back to you within 48 hours.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Green<em>Armor</em></div>
+  <div class="footer-links">
+    <a href="#technology">Technology</a>
+    <a href="#markets">Markets</a>
+    <a href="#sourcing">Sourcing</a>
+    <a href="#compliance">Compliance</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="footer-note">© 2026 Green Armor. Localized. Sustainable. Resilient.</div>
+</footer>
+
+<script>
+  // Fade-up on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Form submit
+  document.getElementById('inquiry-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.getElementById('form-success').style.display = 'block';
+    this.reset();
+  });
+
+  // Nav scroll effect
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.boxShadow =
+      window.scrollY > 50 ? '0 2px 20px rgba(28,58,32,0.12)' : 'none';
+  });
+</script>
+</body>
+</html>
